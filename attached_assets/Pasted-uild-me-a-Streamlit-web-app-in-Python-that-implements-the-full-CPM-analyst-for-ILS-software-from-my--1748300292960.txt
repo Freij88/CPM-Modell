@@ -1,0 +1,108 @@
+uild me a Streamlit web-app in Python that implements the full CPM-analyst for ILS software from my thesis:
+
+Dynamic CSF list
+
+Start with these default CSFs & weights:
+
+json
+Kopiera
+Redigera
+[ { "name":"Efterlevnad av ILS-standarder", "vikt":0.2 },
+  { "name":"Pris för kund",             "vikt":0.15 },
+  { "name":"Användarvänlighet",         "vikt":0.10 },
+  { "name":"Flexibilitet i integration", "vikt":0.10 },
+  { "name":"Stöd för S2000M",           "vikt":0.15 },
+  { "name":"Visualisering & analys",     "vikt":0.10 },
+  { "name":"Driftsäkerhet",             "vikt":0.10 },
+  { "name":"Kundsupport",               "vikt":0.10 } ]
+Let the user add new CSFs or remove existing ones.
+
+When the CSF set changes, automatically re-compute all weights using the Rank Order Centroid (ROC) method, i.e. if N CSFs, the weight for rank i is
+
+𝑤
+𝑖
+=
+1
+𝑁
+∑
+𝑘
+=
+𝑖
+𝑁
+1
+𝑘
+w 
+i
+​
+ = 
+N
+1
+​
+  
+k=i
+∑
+N
+​
+  
+k
+1
+​
+ 
+and then normalize so 
+∑
+𝑤
+𝑖
+=
+1
+∑w 
+i
+​
+ =1.
+
+Dynamic vendor list
+
+Start with these default vendors: ["Combitech","Konkurrent A","Konkurrent B"].
+
+Allow the user to add and remove vendors on demand.
+
+Rating input
+
+For each CSF × Vendor, display a radio or slider for score 1–4.
+
+Store these ratings in a DataFrame.
+
+Weighted scoring
+
+Automatically multiply each rating by its CSF weight.
+
+Sum up across CSFs to get each Vendor’s total score.
+
+Results display
+
+Show a table with Vendors, raw sum of ratings, weighted sum, and normalized score (e.g. out of 100).
+
+Plot a bar chart of total weighted scores.
+
+Reactivity
+
+Any time the user adds/removes a CSF or vendor, or changes a score, immediately recalc everything (ROC weights + totals).
+
+Export
+
+Provide a “Download CSV” button that exports the results DataFrame (with CSFs, weights, ratings, and totals).
+
+Tech details
+
+Use streamlit for UI and pandas for data handling.
+
+Write a requirements.txt listing all dependencies (streamlit, pandas, matplotlib, etc.).
+
+Include a .replit file that sets the run command:
+
+ini
+Kopiera
+Redigera
+run="streamlit run main.py --server.port=$PORT --server.enableCORS=false"
+Organize everything in one Replit project so I can “Run” and get an interactive web app immediately.
+
+Please generate all necessary files (main.py, requirements.txt, .replit) in a Replit-ready structure.
